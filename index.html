@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JD Photography</title>
+<style type="text/css">
+</style>
+<link rel="stylesheet" href="css/style1.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel=icon href="http://mypopcorn.in/shopping/wp-content/uploads/2016/11/cropped-popcorn1-1-1-32x32.png" sizes=32x32 />
+</head>
+
+<body style="background-color: black">
+<div class="skw-pages w3-hide-small">
+  <div class="skw-page skw-page-1 active">
+  	<div class="skw-page__half skw-page__half--left">
+      <div class="skw-page__skewed">
+        <div class="skw-page__content">
+          <div class="img"><div class="size"></div></div>
+        </div>
+      </div>
+    </div>
+    <a href="art/index.html"><div class="skw-page__half skw-page__half--right">
+      <div class="skw-page__skewed">
+        <div class="skw-page__content">
+          <div class="img"><h1 class="skw-page__heading" style="">ART</h1>
+          <p class="skw-page__description">Life through the lens</p></div>
+        </div>
+      </div>
+    </div></a>
+    
+  </div>
+  
+  <div class="skw-page skw-page-2">
+    <a href="commercial/index.html"><div class="skw-page__half skw-page__half--left">
+      <div class="skw-page__skewed">
+        <div class="skw-page__content" style="color: white;">
+          <div class="img"><h1 class="skw-page__heading" style="">COMMERCIAL</h1>
+          <p class="skw-page__description">Ready. Set. Cheese!</p></div>
+        </div>
+      </div>
+    </div></a>
+    
+    <div class="skw-page__half skw-page__half--right">
+      <div class="skw-page__skewed">
+        <div class="skw-page__content">
+          <div class="img"><div class="size"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="skw-page__half skw-page__half--right">
+      <div class="skw-page__skewed">
+        <div class="skw-page__content"></div>
+      </div>
+    </div>
+    
+  </div>
+  
+   <!--  <div class="bounce skw-page__description_1"><div class="bounce-right"><img src="images/100735-200-white.png" width="100px">COMMERCIAL</div>
+     
+  	</div>
+    <div class="bounce skw-page__description_2"><div class="bounce-left"><img src="images/100735-200-white.png" width="100px" style="transform:rotate(180deg)">ART</div>
+    
+  	</div> -->
+</div>
+<div class="w3-hide-large w3-hide-medium" style="background-color: white;">
+  <img src="images/logo.png" style="position: absolute; width: 100px;height: 100px;">
+<a href="art/index.html" ><div style="height: 50vh;background:url(images/maternitymob.jpg) no-repeat right top;margin-top: -10px">
+  <div class="content" style="display: block;margin:0 auto;">
+    <h1 class="title">ART</h1>
+     <p class="text">Life through the lens</p>
+  </div>
+</div></a>
+<a href="commercial/index.html"><div  style="height: 50vh;background:url(images/commercialmob.jpg) no-repeat right top;margin-top: -10px">
+  <div class="content">
+    <h1 class="title">COMMERCIAL</h1>
+     <p class="text">Ready. Set. Cheese!</p>
+  </div>
+</div></a>
+</div>
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script> 
+<script>
+$(document).ready(function() {
+	$('.skw-page__description_2').hide();
+  var curPage = 1;
+  var numOfPages = $(".skw-page").length;
+  var animTime = 1000;
+  var scrolling = false;
+  var pgPrefix = ".skw-page-";
+
+  function pagination() {
+    scrolling = true;
+
+    $(pgPrefix + curPage).removeClass("inactive").addClass("active");
+    $(pgPrefix + (curPage - 1)).addClass("inactive");
+    $(pgPrefix + (curPage + 1)).removeClass("active");
+
+    setTimeout(function() {
+      scrolling = false;
+    }, animTime);
+  };
+
+  function navigateUp() {
+    if (curPage === 1) return;
+    curPage--;
+    pagination();
+  };
+
+  function navigateDown() {
+    if (curPage === numOfPages) return;
+    curPage++;
+    pagination();
+  };
+
+  $(document).on("mousewheel DOMMouseScroll", function(e) {
+    if (scrolling) return;
+    if (e.originalEvent.wheelDelta > 0 || e.originalEvent.detail < 0) {
+      navigateUp();
+	  $('.skw-page__description_1').show();
+	  $('.skw-page__description_2').hide();
+    } else { 
+      navigateDown();
+	  $('.skw-page__description_2').show();
+	  $('.skw-page__description_1').hide();
+    }
+  });
+  
+  $('.skw-page__description_1').click(function(e) {
+    navigateDown();
+	$(this).hide();
+	$('.skw-page__description_2').show();
+  });
+  
+  $('.skw-page__description_2').click(function(e) {
+    navigateUp();
+	$(this).hide();
+	$('.skw-page__description_1').show();
+  });
+  
+
+  $(document).on("keydown", function(e) {
+    if (scrolling) return;
+    if (e.which === 38) {
+      navigateUp();
+	  $('.skw-page__description_1').show();
+	  $('.skw-page__description_2').hide();
+    } else if (e.which === 40) {
+      navigateDown();
+	  $('.skw-page__description_2').show();
+	  $('.skw-page__description_1').hide();
+    }
+  });
+
+});
+</script>
+
+</body>
+</html>
